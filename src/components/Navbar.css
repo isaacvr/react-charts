@@ -1,0 +1,20 @@
+nav .nav-item {
+  position: relative;
+}
+
+nav .nav-item::before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: .1rem;
+  border-radius: 1rem;
+  background-color: currentColor;
+  bottom: -0.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 200ms;
+}
+
+nav .nav-item:hover::before {
+  width: 100%;
+}
