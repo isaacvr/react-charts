@@ -5,15 +5,33 @@ interface IData {
   date: number;
 }
 
-export function random(list: string[], amount: number) {
+/**
+ * 
+ * @param list
+ * @param amount
+ * @returns string[]
+ * @description Selects a random number of elements on the provided list
+ */
+export function random(list: string[], amount: number): string[] {
   return list.map(s => ({ s, id: Math.random() })).sort((a, b) => a.id - b.id).map(e => e.s).slice(0, amount);
 }
 
-export function randomInt(len: number) {
+/**
+ * 
+ * @param len 
+ * @returns {number}
+ * @description Get a random integer n, such as 0 <= n < len
+ */
+export function randomInt(len: number): number {
   return Math.min(len - 1, Math.round(Math.random() * len));
 }
 
-export function generateDataset() {
+/**
+ * 
+ * @returns { IData[] }
+ * @description Generate a big dataset with random categories, products and brands
+ */
+export function generateDataset(): IData[] {
   const categories = [ 'Food', 'Groceries', 'Shirts', 'Hats', 'Furniture', 'Books', 'Appliances', 'Skincare', 'Electronics' ];
   
   const products = [ 'Milk', 'Chocolate', 'Strawberry', 'Candle', 'Lotion', 'Tooth picks', 'Lamp shade', 'Couch', 'Computer', 'Wagon', 'Candy wrapper', 'Box', 'Clamp', 'Outlet', 'Slipper', 'Pillow', 'Keyboard', 'Chalk', 'Cookie jar', 'Video games', 'Vase', 'Bookmark', 'Bed', 'Toe ring', 'Twister', 'Puddle', 'Thermostat', 'Hanger', 'Nail clippers', 'Sticky note', 'Cup', 'Model car', 'Thread', 'Food', 'Beef', 'Shoe lace', 'Packing peanuts', 'Window', 'Eye liner', 'Radio', 'Piano', 'Bed' ];
