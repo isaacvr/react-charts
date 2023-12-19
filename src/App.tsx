@@ -64,12 +64,15 @@ function App() {
       setCategories([...new Set(dataset.map(d => d.category))]);
       setProducts([...new Set(prods.map(d => d.name))]);
       setBrands([...new Set(brands.map(d => d.brand))]);
-
-      setCategory(item.category);
-      setProduct(item.name);
-      setBrand(item.brand);
     }
   }, []);
+
+  // Handle categories
+  useEffect(() => {
+    if ( categories.length ) {
+      setCategory(categories[0]);
+    }
+  }, [categories]);
 
   // Handle category change
   useEffect(() => {
@@ -79,9 +82,9 @@ function App() {
     if ( cats.length ) {
       setProduct(cats[0].name);
 
-      let br = cats.filter(c => c.brand === cats[0].brand);
-      setBrands([...new Set(br.map(d => d.brand))]);
-      br.length && setBrand(br[0].brand);
+      // let br = cats.filter(c => c.brand === cats[0].brand);
+      // setBrands([...new Set(br.map(d => d.brand))]);
+      // br.length && setBrand(br[0].brand);
     }
 
   }, [category]);
@@ -180,7 +183,7 @@ function App() {
           </FormControl>
         </li>
         <li>
-          <Button className='capitalize' onClick={ toggleMode }>{ mode === 'dark' ? 'Light mode' : 'Dark Mode' }</Button>
+          <Button className='capitalize' onClick={ toggleMode }>{ mode === 'dark' ? 'Light Mode' : 'Dark Mode' }</Button>
         </li>
       </ul>
 
